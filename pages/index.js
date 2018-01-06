@@ -40,9 +40,9 @@ export default class Index extends Component {
           }
 
           .conversation {
-            height: 65%;
             display: flex;
             flex-direction: column;
+            height: 65%;
             width: 80%;
           }
         `}</style>

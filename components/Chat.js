@@ -30,8 +30,8 @@ export default class Chat extends Component {
         />
         <style jsx>{`
           .input-section {
-            display: flex;
             align-items: center;
+            display: flex;
             height: 15%;
             width: 60%;
           }
@@ -40,9 +40,13 @@ export default class Chat extends Component {
             border: none;
             border-radius: 20px;
             font-size: 2vw;
-            height: 5k0px;
+            height: 50px;
             padding-left: 25px;
             width: 100%;
+          }
+
+          input:focus {
+            outline: none;
           }
         `}</style>
       </section>

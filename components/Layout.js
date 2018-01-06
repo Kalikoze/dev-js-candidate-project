@@ -22,9 +22,9 @@ const Layout = ({ children }) => (
       }
 
       .container {
-        height: 100vh;
         display: flex;
         flex-wrap: wrap;
+        height: 100vh;
         justify-content: center;
         position: absolute;
         width: 100%;
