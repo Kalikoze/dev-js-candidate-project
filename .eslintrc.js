@@ -1,9 +1,13 @@
-{
+module.exports = {
     "env": {
         "browser": true,
         "es6": true
     },
     "extends": "eslint:recommended",
+    globals: {
+      require: 'false',
+      process: 'false'
+    },
     "parserOptions": {
         "ecmaFeatures": {
             "experimentalObjectRestSpread": true,
@@ -17,7 +21,7 @@
     "rules": {
         "indent": [
             "error",
-            "tab"
+            2
         ],
         "linebreak-style": [
             "error",
@@ -32,4 +36,4 @@
             "always"
         ]
     }
-}
+};
