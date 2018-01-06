@@ -1,4 +1,5 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export default class Chat extends Component {
   constructor() {
@@ -31,3 +32,7 @@ export default class Chat extends Component {
     );
   }
 }
+
+Chat.propTypes = {
+  addMessage: PropTypes.func,
+};

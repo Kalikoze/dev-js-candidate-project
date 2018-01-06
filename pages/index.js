@@ -1,5 +1,6 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import Chat from '../components/Chat';
+import Message from '../components/Message';
 
 export default class Index extends Component {
   constructor() {
@@ -17,11 +18,14 @@ export default class Index extends Component {
 
   render() {
     const { messages } = this.state;
-    console.log(messages);
+    const conversation = messages.map((message, i) => <Message key={i} text={message}/>);
 
     return (
       <section>
         <h1>SpruceBot</h1>
+        <section className='conversation'>
+          {conversation}
+        </section>
         <Chat addMessage={this.addMessage}/>
       </section>
     );
