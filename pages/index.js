@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Chat from '../components/Chat';
 import Message from '../components/Message';
+import Layout from '../components/Layout';
 
 export default class Index extends Component {
   constructor() {
@@ -21,13 +22,13 @@ export default class Index extends Component {
     const conversation = messages.map((message, i) => <Message key={i} text={message}/>);
 
     return (
-      <section>
+      <Layout>
         <h1>SpruceBot</h1>
         <section className='conversation'>
           {conversation}
         </section>
         <Chat addMessage={this.addMessage}/>
-      </section>
+      </Layout>
     );
   }
 }

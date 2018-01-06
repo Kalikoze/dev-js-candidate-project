@@ -8,7 +8,7 @@ const Message = ({ text }) => (
 );
 
 Message.propTypes = {
-  text: PropTypes.string,
+  text: PropTypes.array.isRequired,
 };
 
 export default Message;

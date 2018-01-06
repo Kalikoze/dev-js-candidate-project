@@ -34,5 +34,5 @@ export default class Chat extends Component {
 }
 
 Chat.propTypes = {
-  addMessage: PropTypes.func,
+  addMessage: PropTypes.func.isRequired,
 };
