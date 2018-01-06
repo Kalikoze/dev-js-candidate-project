@@ -12,6 +12,10 @@ export default class Index extends Component {
     this.addMessage = this.addMessage.bind(this);
   }
 
+  componentDidUpdate() {
+    this.convo.scrollTop = this.convo.scrollHeight;
+  }
+
   addMessage(message) {
     const { messages } = this.state;
     this.setState({messages: [...messages, message]});
@@ -24,7 +28,7 @@ export default class Index extends Component {
     return (
       <Layout>
         <h1>SpruceBot</h1>
-        <section className='conversation'>
+        <section className='conversation' ref={node => this.convo = node}>
           {conversation}
         </section>
         <Chat addMessage={this.addMessage}/>
@@ -45,6 +49,7 @@ export default class Index extends Component {
             display: flex;
             flex-direction: column;
             height: 65%;
+            overflow-y: scroll;
             width: 80%;
           }
         `}</style>
