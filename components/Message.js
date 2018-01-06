@@ -8,6 +8,7 @@ const Message = ({ text }) => (
       .message {
         background: rgba(255, 255, 255, 0.7);
         border-radius: .6em;
+        font-family: 'Lato', sans-serif;
         font-size: 1.5em;
         height: auto;
         margin: 20px;

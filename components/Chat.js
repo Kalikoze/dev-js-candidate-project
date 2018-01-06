@@ -39,6 +39,7 @@ export default class Chat extends Component {
           input {
             border: none;
             border-radius: 20px;
+            font-family: 'Lato', sans-serif;
             font-size: 2vw;
             height: 50px;
             padding-left: 25px;

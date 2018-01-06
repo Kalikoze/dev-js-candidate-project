@@ -33,7 +33,9 @@ export default class Index extends Component {
             align-items: center;
             color: #FFF;
             display: flex;
+            font-family: 'Lato', sans-serif;
             font-size: 5vw;
+            font-weight: 700;
             height: 20%;
             justify-content: center;
             width: 100%;
