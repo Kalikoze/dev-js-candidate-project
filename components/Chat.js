@@ -28,6 +28,23 @@ export default class Chat extends Component {
           onChange={e => this.setState({input: e.target.value})}
           onKeyDown={e => this.submit(e)}
         />
+        <style jsx>{`
+          .input-section {
+            display: flex;
+            align-items: center;
+            height: 15%;
+            width: 60%;
+          }
+
+          input {
+            border: none;
+            border-radius: 20px;
+            font-size: 2vw;
+            height: 5k0px;
+            padding-left: 25px;
+            width: 100%;
+          }
+        `}</style>
       </section>
     );
   }
