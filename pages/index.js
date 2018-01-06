@@ -28,6 +28,31 @@ export default class Index extends Component {
           {conversation}
         </section>
         <Chat addMessage={this.addMessage}/>
+        <style jsx>{`
+          h1 {
+            align-items: center;
+            color: #FFF;
+            display: flex;
+            font-size: 5vw;
+            height: 20%;
+            justify-content: center;
+            width: 100%;
+          }
+
+          .conversation {
+            height: 65%;
+            display: flex;
+            flex-direction: column;
+            width: 80%;
+          }
+        `}</style>
+        <style jsx global>{`
+          * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+          }
+        `}</style>
       </Layout>
     );
   }

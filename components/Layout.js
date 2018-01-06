@@ -8,6 +8,28 @@ const Layout = ({ children }) => (
     <section className='container'>
       {children}
     </section>
+    <style jsx>{`
+      .layout {
+        display: flex;
+        height: 100vh;
+        width: 100%;
+      }
+
+      video {
+        height: 100%;
+        object-fit: fill;
+        width: 100%;
+      }
+
+      .container {
+        height: 100vh;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        position: absolute;
+        width: 100%;
+      }
+    `}</style>
   </section>
 );
 
