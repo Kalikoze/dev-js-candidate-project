@@ -1,0 +1,29 @@
+{
+  "name": "sprucebot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "next"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kalikoze/dev-js-candidate-project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kalikoze/dev-js-candidate-project/issues"
+  },
+  "homepage": "https://github.com/Kalikoze/dev-js-candidate-project#readme",
+  "dependencies": {
+    "next": "^4.2.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.14.0",
+    "eslint-plugin-react": "^7.5.1"
+  }
+}
