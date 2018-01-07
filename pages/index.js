@@ -12,18 +12,26 @@ export default class Index extends Component {
     this.addMessage = this.addMessage.bind(this);
   }
 
+  componentDidMount() {
+    const { messages } = this.state;
+    const { message } = this.props;
+    if(this.props.message) {
+      this.setState({messages: [...messages, {message, user: false}]})
+    }
+  }
+
   componentDidUpdate() {
     this.convo.scrollTop = this.convo.scrollHeight;
   }
 
   addMessage(message) {
     const { messages } = this.state;
-    this.setState({messages: [...messages, message]});
+    this.setState({messages: [...messages, {message, user: true}]});
   }
 
   render() {
     const { messages } = this.state;
-    const conversation = messages.map((message, i) => <Message key={i} text={message}/>);
+    const conversation = messages.map((message, i) => <Message key={i} text={message.message} isUser={message.user}/>);
 
     return (
       <Layout>
@@ -64,3 +72,9 @@ export default class Index extends Component {
     );
   }
 }
+
+Index.getInitialProps = async context => {
+  const message = context.query.message;
+
+  return { message };
+};

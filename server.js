@@ -18,20 +18,27 @@ const params = {
 app.prepare()
   .then(() => {
     const server = express();
+    let watsonMessage;
 
     const processResponse = (err, response) => {
       if (err) {
-        console.error(err); // something went wrong
+        /* eslint-disable no-console */
+        console.error(err);
         return;
       }
 
-      // Display the output from dialog, if any.
       if (response.output.text.length != 0) {
-        console.log(response.output.text[0]);
+        watsonMessage = response.output.text[0];
       }
     };
 
     conversation.message(params, processResponse);
+
+    server.get('/', (req, res) => {
+      const queryParams = { message: watsonMessage };
+
+      app.render(req, res, '/', queryParams);
+    });
 
     server.get('*', (req, res) => handle(req, res));
 
