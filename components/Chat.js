@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import fetch from 'isomorphic-unfetch';
 import PropTypes from 'prop-types';
 
 export default class Chat extends Component {
@@ -14,6 +15,14 @@ export default class Chat extends Component {
       const { input } = this.state;
 
       this.props.addMessage(input);
+      fetch('/api/v1/message', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({message: input})
+      }).then(response => response.json())
+        .then(response => console.log(response));
       this.setState({input: ''});
     }
   }

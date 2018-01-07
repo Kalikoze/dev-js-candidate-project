@@ -18,7 +18,9 @@
   },
   "homepage": "https://github.com/Kalikoze/dev-js-candidate-project#readme",
   "dependencies": {
+    "body-parser": "^1.18.2",
     "express": "^4.16.2",
+    "isomorphic-unfetch": "^2.0.0",
     "next": "^4.2.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
