@@ -14,7 +14,7 @@ export default class Chat extends Component {
     if (e.keyCode === 13) {
       const { input } = this.state;
 
-      this.props.addMessage(input);
+      this.props.addMessage(input, true);
       fetch('/api/v1/message', {
         method: 'POST',
         headers: {
@@ -22,7 +22,7 @@ export default class Chat extends Component {
         },
         body: JSON.stringify({message: input})
       }).then(response => response.json())
-        .then(response => console.log(response));
+        .then(response => this.props.addMessage(response.message, false));
       this.setState({input: ''});
     }
   }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import fetch from 'isomorphic-unfetch';
 import Chat from '../components/Chat';
 import Message from '../components/Message';
 import Layout from '../components/Layout';
@@ -24,9 +25,9 @@ export default class Index extends Component {
     this.convo.scrollTop = this.convo.scrollHeight;
   }
 
-  addMessage(message) {
+  addMessage(message, bool) {
     const { messages } = this.state;
-    this.setState({messages: [...messages, {message, user: true}]});
+    this.setState({messages: [...messages, {message, user: bool}]});
   }
 
   render() {

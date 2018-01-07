@@ -19,7 +19,6 @@ const params = {
 app.prepare()
   .then(() => {
     const server = express();
-    let watsonMessage;
 
     server.use(bodyParser.json());
 
@@ -31,24 +30,25 @@ app.prepare()
       }
 
       if (response.output.text.length != 0) {
-        watsonMessage = response.output.text[0];
+        // console.log(response.intents[0]);
+        return response.output.text[0];
       }
     };
 
-    conversation.message(params, processResponse);
-
     server.get('/', (req, res) => {
-      const queryParams = { message: watsonMessage };
-
-      app.render(req, res, '/', queryParams);
+      conversation.message(params, (err, data) => {
+        app.render(req, res, '/', {message: processResponse(err, data)});
+      });
     });
 
     server.post('/api/v1/message', (req, res) => {
       conversation.message({
-        workspace_id: 'b92be708-4b4e-43fd-9bd5-8486fc66d99b',
+        workspace_id: params.workspace_id,
         input: { text: req.body.message },
         context : res.context,
-      }, processResponse);
+      }, (err, data) => {
+        res.send({ message: processResponse(err, data) });
+      });
     });
 
     server.get('*', (req, res) => handle(req, res));
