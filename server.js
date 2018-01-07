@@ -18,26 +18,22 @@ const params = {
 app.prepare()
   .then(() => {
     const server = express();
-    let watsonMessage;
-
-    const processResponse = (err, response) => {
-      if (err) {
-        /* eslint-disable no-console */
-        console.error(err);
-        return;
-      }
-
-      if (response.output.text.length != 0) {
-        watsonMessage = response.output.text[0];
-      }
-    };
-
-    conversation.message(params, processResponse);
 
     server.get('/', (req, res) => {
-      const queryParams = { message: watsonMessage };
+      conversation.message(params, processResponse);
 
-      app.render(req, res, '/', queryParams);
+      const processResponse = (err, response) => {
+        if (err) {
+          /* eslint-disable no-console */
+          console.error(err);
+          return;
+        }
+
+        if (response.output.text.length != 0) {
+          const queryParams = { message: response.output.text[0] };
+          app.render(req, res, '/', queryParams);
+        }
+      };
     });
 
     server.get('*', (req, res) => handle(req, res));
