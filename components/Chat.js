@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import fetch from 'isomorphic-unfetch';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { postMessage } from '../store';
 import PropTypes from 'prop-types';
 
-export default class Chat extends Component {
+class Chat extends Component {
   constructor() {
     super();
     this.state = {
@@ -10,20 +13,17 @@ export default class Chat extends Component {
     };
   }
 
-  submit(e) {
+  async submit(e) {
     if (e.keyCode === 13) {
       const { input } = this.state;
-      const { addMessage } = this.props;
+      const { addMessage, postMessage } = this.props;
 
       addMessage(input);
-      fetch('/api/v1/message', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({message: input})
-      }).then(response => response.json())
-        .then(message => addMessage(message.message, message.intent));
+      await postMessage(input);
+
+      const { message, intent } = this.props.response;
+
+      addMessage(message, intent)
       this.setState({input: ''});
     }
   }
@@ -68,3 +68,13 @@ export default class Chat extends Component {
 Chat.propTypes = {
   addMessage: PropTypes.func.isRequired,
 };
+
+const mapStateToProps = ({watsonResponse}) => ({ response: watsonResponse.response });
+
+const mapDispatchToProps = dispatch => {
+  return {
+    postMessage: bindActionCreators(postMessage, dispatch)
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Chat);

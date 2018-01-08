@@ -94,14 +94,12 @@ class Index extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  currentJoke: state.currentJoke
-})
+const mapStateToProps = ({ newJoke }) => ({ currentJoke: newJoke.currentJoke });
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     fetchJoke: bindActionCreators({ fetchRandomJoke, fetchNerdyJoke, fetchExplicitJoke }, dispatch),
-  }
-}
+  };
+};
 
-export default withRedux(Store, mapStateToProps, mapDispatchToProps)(Index)
+export default withRedux(Store, mapStateToProps, mapDispatchToProps)(Index);
