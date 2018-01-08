@@ -17,7 +17,7 @@ export default class Index extends Component {
     const { messages } = this.state;
     const { message } = this.props;
     if(this.props.message) {
-      this.setState({messages: [...messages, {message, user: false}]})
+      this.setState({messages: [...messages, {message, isUser: false}]})
     }
   }
 
@@ -25,14 +25,21 @@ export default class Index extends Component {
     this.convo.scrollTop = this.convo.scrollHeight;
   }
 
-  addMessage(message, bool) {
+  async addMessage(message, intent) {
     const { messages } = this.state;
-    this.setState({messages: [...messages, {message, user: bool}]});
+
+    if (intent === 'randomjoke') {
+        const res = await fetch('http://api.icndb.com/jokes/random/?escape=javascript');
+        const joke = await res.json();
+        return this.setState({messages: [...messages, {message: `${message} ${joke.value.joke}`, isUser: !intent ? true : false }]})
+    }
+
+    this.setState({messages: [...messages, {message, isUser: !intent ? true : false }]});
   }
 
   render() {
     const { messages } = this.state;
-    const conversation = messages.map((message, i) => <Message key={i} text={message.message} isUser={message.user}/>);
+    const conversation = messages.map((message, i) => <Message key={i} text={message.message} isUser={message.isUser}/>);
 
     return (
       <Layout>
@@ -75,7 +82,8 @@ export default class Index extends Component {
 }
 
 Index.getInitialProps = async context => {
-  const message = context.query.message;
+  const message = context.query;
+  console.log(message);
 
-  return { message };
+  return message;
 };

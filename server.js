@@ -29,15 +29,20 @@ app.prepare()
         return;
       }
 
+      if (response.intents && response.intents[0]) {
+        const intent = response.intents[0];
+        const message = response.output.text[0];
+        return { message: message, intent: intent.intent };
+      }
+
       if (response.output.text.length != 0) {
-        // console.log(response.intents[0]);
-        return response.output.text[0];
+        return {message: response.output.text[0]};
       }
     };
 
     server.get('/', (req, res) => {
       conversation.message(params, (err, data) => {
-        app.render(req, res, '/', {message: processResponse(err, data)});
+        app.render(req, res, '/', processResponse(err, data));
       });
     });
 
@@ -47,7 +52,7 @@ app.prepare()
         input: { text: req.body.message },
         context : res.context,
       }, (err, data) => {
-        res.send({ message: processResponse(err, data) });
+        res.send(processResponse(err, data));
       });
     });
 
