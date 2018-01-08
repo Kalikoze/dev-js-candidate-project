@@ -13,6 +13,12 @@ export default class Index extends Component {
     this.addMessage = this.addMessage.bind(this);
   }
 
+  static async getInitialProps(context) {
+    const message = context.query;
+
+    return message;
+  }
+
   componentDidMount() {
     const { messages } = this.state;
     const { message } = this.props;
@@ -80,10 +86,3 @@ export default class Index extends Component {
     );
   }
 }
-
-Index.getInitialProps = async context => {
-  const message = context.query;
-  console.log(message);
-
-  return message;
-};
