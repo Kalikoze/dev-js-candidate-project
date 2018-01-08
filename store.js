@@ -10,6 +10,8 @@ export const newJoke = (state = {}, action) => {
     return { randomJoke: action.joke };
   case 'NERDY_JOKE':
     return { nerdyJoke: action.joke };
+  case 'EXPLICIT_JOKE':
+    return { explicitJoke: action.joke };
   default:
     return state;
   }
@@ -29,6 +31,13 @@ export const fetchNerdyJoke = () => async dispatch => {
   const joke = await res.json();
 
   dispatch({type: 'NERDY_JOKE', joke: joke.value.joke });
+};
+
+export const fetchExplicitJoke = () => async dispatch => {
+  const res = await fetch('http://api.icndb.com/jokes/random?limitTo=[explicit]');
+  const joke = await res.json();
+
+  dispatch({type: 'EXPLICIT_JOKE', joke: joke.value.joke });
 };
 
 export const Store = (initialState = { }) => {

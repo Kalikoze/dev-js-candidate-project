@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import fetch from 'isomorphic-unfetch';
 import { bindActionCreators } from 'redux';
-import { fetchRandomJoke, fetchNerdyJoke, Store } from '../store';
+import { fetchRandomJoke, fetchNerdyJoke, fetchExplicitJoke, Store } from '../store';
 import withRedux from 'next-redux-wrapper';
 import Chat from '../components/Chat';
 import Message from '../components/Message';
@@ -19,6 +19,7 @@ class Index extends Component {
   static async getInitialProps({query, store}) {
     store.dispatch(fetchRandomJoke());
     store.dispatch(fetchNerdyJoke());
+    store.dispatch(fetchExplicitJoke());
     return query;
   }
 
@@ -49,6 +50,13 @@ class Index extends Component {
       await fetchNerdyJoke();
 
       return this.setState({messages: [...messages, {message: `${message} ${this.props.nerdyJoke}`, isUser: !intent ? true : false }]})
+    }
+
+    if (intent === 'explicitjoke') {
+      const { fetchExplicitJoke } = this.props.fetchJoke;
+      await fetchExplicitJoke();
+
+      return this.setState({messages: [...messages, {message: `${message} ${this.props.explicitJoke}`, isUser: !intent ? true : false }]})
     }
 
     this.setState({messages: [...messages, {message, isUser: !intent ? true : false }]});
@@ -99,12 +107,13 @@ class Index extends Component {
 
 const mapStateToProps = state => ({
   randomJoke: state.randomJoke,
-  nerdyJoke: state.nerdyJoke
+  nerdyJoke: state.nerdyJoke,
+  explicitJoke: state.explicitJoke,
 })
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchJoke: bindActionCreators({fetchRandomJoke, fetchNerdyJoke}, dispatch),
+    fetchJoke: bindActionCreators({ fetchRandomJoke, fetchNerdyJoke, fetchExplicitJoke }, dispatch),
   }
 }
 
