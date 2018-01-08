@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import fetch from 'isomorphic-unfetch';
+import { bindActionCreators } from 'redux';
+import { fetchRandomJoke, Store } from '../store';
+import withRedux from 'next-redux-wrapper';
 import Chat from '../components/Chat';
 import Message from '../components/Message';
 import Layout from '../components/Layout';
 
-export default class Index extends Component {
+class Index extends Component {
   constructor() {
     super();
     this.state = {
@@ -16,6 +19,8 @@ export default class Index extends Component {
   static async getInitialProps(context) {
     const message = context.query;
 
+    context.store.dispatch(fetchRandomJoke());
+    console.log(context.store)
     return message;
   }
 
@@ -35,9 +40,10 @@ export default class Index extends Component {
     const { messages } = this.state;
 
     if (intent === 'randomjoke') {
-        const res = await fetch('http://api.icndb.com/jokes/random/?escape=javascript');
-        const joke = await res.json();
-        return this.setState({messages: [...messages, {message: `${message} ${joke.value.joke}`, isUser: !intent ? true : false }]})
+      const { fetchRandomJoke, currentJoke } = this.props;
+
+      await fetchRandomJoke();
+      return this.setState({messages: [...messages, {message: `${message} ${currentJoke}`, isUser: !intent ? true : false }]})
     }
 
     this.setState({messages: [...messages, {message, isUser: !intent ? true : false }]});
@@ -46,7 +52,6 @@ export default class Index extends Component {
   render() {
     const { messages } = this.state;
     const conversation = messages.map((message, i) => <Message key={i} text={message.message} isUser={message.isUser}/>);
-
     return (
       <Layout>
         <h1>SpruceBot</h1>
@@ -86,3 +91,13 @@ export default class Index extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({ currentJoke: state.randomJoke })
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchRandomJoke: bindActionCreators(fetchRandomJoke, dispatch),
+  }
+}
+
+export default withRedux(Store, mapStateToProps, mapDispatchToProps)(Index)
