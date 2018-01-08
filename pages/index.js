@@ -16,12 +16,9 @@ class Index extends Component {
     this.addMessage = this.addMessage.bind(this);
   }
 
-  static async getInitialProps(context) {
-    const message = context.query;
-
-    context.store.dispatch(fetchRandomJoke());
-    console.log(context.store)
-    return message;
+  static async getInitialProps({query, store}) {
+    store.dispatch(fetchRandomJoke());
+    return query;
   }
 
   componentDidMount() {
@@ -40,10 +37,10 @@ class Index extends Component {
     const { messages } = this.state;
 
     if (intent === 'randomjoke') {
-      const { fetchRandomJoke, currentJoke } = this.props;
-
+      const { fetchRandomJoke } = this.props;
       await fetchRandomJoke();
-      return this.setState({messages: [...messages, {message: `${message} ${currentJoke}`, isUser: !intent ? true : false }]})
+
+      return this.setState({messages: [...messages, {message: `${message} ${this.props.currentJoke}`, isUser: !intent ? true : false }]})
     }
 
     this.setState({messages: [...messages, {message, isUser: !intent ? true : false }]});
