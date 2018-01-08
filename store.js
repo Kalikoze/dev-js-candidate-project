@@ -7,11 +7,11 @@ import thunkMiddleware from 'redux-thunk';
 export const newJoke = (state = {}, action) => {
   switch(action.type) {
   case 'RANDOM_JOKE':
-    return { randomJoke: action.joke };
+    return { currentJoke: action.joke };
   case 'NERDY_JOKE':
-    return { nerdyJoke: action.joke };
+    return { currentJoke: action.joke };
   case 'EXPLICIT_JOKE':
-    return { explicitJoke: action.joke };
+    return { currentJoke: action.joke };
   default:
     return state;
   }

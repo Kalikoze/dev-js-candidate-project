@@ -37,26 +37,15 @@ class Index extends Component {
 
   async addMessage(message, intent) {
     const { messages } = this.state;
+    const { fetchRandomJoke, fetchNerdyJoke, fetchExplicitJoke } = this.props.fetchJoke;
+    const jokeIntents = ['randomjoke', 'nerdyjoke', 'explicitjoke'];
+    const getJoke = [fetchRandomJoke, fetchNerdyJoke, fetchExplicitJoke];
 
-    if (intent === 'randomjoke') {
-      const { fetchRandomJoke } = this.props.fetchJoke;
-      await fetchRandomJoke();
+    if(jokeIntents.includes(intent)) {
+      const index = jokeIntents.indexOf(intent);
+      await getJoke[index]();
 
-      return this.setState({messages: [...messages, {message: `${message} ${this.props.randomJoke}`, isUser: !intent ? true : false }]})
-    }
-
-    if (intent === 'nerdyjoke') {
-      const { fetchNerdyJoke } = this.props.fetchJoke;
-      await fetchNerdyJoke();
-
-      return this.setState({messages: [...messages, {message: `${message} ${this.props.nerdyJoke}`, isUser: !intent ? true : false }]})
-    }
-
-    if (intent === 'explicitjoke') {
-      const { fetchExplicitJoke } = this.props.fetchJoke;
-      await fetchExplicitJoke();
-
-      return this.setState({messages: [...messages, {message: `${message} ${this.props.explicitJoke}`, isUser: !intent ? true : false }]})
+      return this.setState({messages: [...messages, {message: `${message} ${this.props.currentJoke}`, isUser: !intent ? true : false }]});
     }
 
     this.setState({messages: [...messages, {message, isUser: !intent ? true : false }]});
@@ -106,9 +95,7 @@ class Index extends Component {
 }
 
 const mapStateToProps = state => ({
-  randomJoke: state.randomJoke,
-  nerdyJoke: state.nerdyJoke,
-  explicitJoke: state.explicitJoke,
+  currentJoke: state.currentJoke
 })
 
 const mapDispatchToProps = (dispatch) => {
