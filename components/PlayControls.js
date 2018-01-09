@@ -22,9 +22,9 @@ export default class PlayControls extends Component {
         <img src='../static/play-controls/rewind.svg'
           onClick={() => {
             if(track === 1) {
-              return this.setState({ track: 4 });
+              return this.setState({ track: 4, isPlaying: true });
             }
-            this.setState({track: track - 1});
+            this.setState({track: track - 1, isPlaying: true});
           }}
         />
         <img
@@ -34,9 +34,9 @@ export default class PlayControls extends Component {
         <img src='../static/play-controls/fast-forward.svg'
           onClick={() => {
             if(track === 4) {
-              return this.setState({ track: 1 });
+              return this.setState({ track: 1, isPlaying: true });
             }
-            this.setState({track: track + 1});
+            this.setState({track: track + 1, isPlaying: true});
           }}
         />
         <style jsx>{`
