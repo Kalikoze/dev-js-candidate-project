@@ -39,7 +39,7 @@ describe('actions', () => {
   });
 
   describe('randomJoke', () => {
-    it('should return a joke', () => {
+    it('should return a random joke', () => {
       const joke = 'Sure thing! Let me think... Chuck Norris can spawn threads that complete before they are started.';
 
       const expectedAction = {
@@ -56,6 +56,64 @@ describe('actions', () => {
       const joke = 'Sure thing! Let me think... Chuck Norris can spawn threads that complete before they are started.';
 
       fetchMock.get('http://api.icndb.com/jokes/random/?escape=javascript', {
+        method: 'GET',
+        status: 200,
+        body: joke
+      });
+
+      expect(fetchMock.routes[0].response.method).toEqual('GET');
+      expect(fetchMock.routes[0].response.status).toEqual(200);
+      expect(fetchMock.routes[0].response.body).toEqual(joke);
+    });
+  });
+
+  describe('nerdyJoke', () => {
+    it('should return a nerdy joke', () => {
+      const joke = 'Lolz I got a joke that is especially nerdy for ya! Chuck Norris went out of an infinite loop.';
+
+      const expectedAction = {
+        type: 'NERDY_JOKE',
+        joke
+      };
+
+      expect(nerdyJoke(joke)).toEqual(expectedAction);
+    });
+  });
+
+  describe('fetchNerdyJoke', () => {
+    it('should mock fetching a nerdy joke', () => {
+      const joke = 'Lolz I got a joke that is especially nerdy for ya! Chuck Norris went out of an infinite loop.';
+
+      fetchMock.get('http://api.icndb.com/jokes/random?limitTo=[nerdy]', {
+        method: 'GET',
+        status: 200,
+        body: joke
+      });
+
+      expect(fetchMock.routes[0].response.method).toEqual('GET');
+      expect(fetchMock.routes[0].response.status).toEqual(200);
+      expect(fetchMock.routes[0].response.body).toEqual(joke);
+    });
+  });
+
+  describe('explicitJoke', () => {
+    it('should return an explicit joke', () => {
+      const joke = 'Sure thing! Let me think of something more explicit... China lets Chuck Norris search for porn on Google.';
+
+      const expectedAction = {
+        type: 'EXPLICIT_JOKE',
+        joke
+      };
+
+      expect(explicitJoke(joke)).toEqual(expectedAction);
+    });
+  });
+
+  describe('fetchExplicitJoke', () => {
+    it('should mock fetching an explicit joke', () => {
+      const joke = 'Sure thing! Let me think of something more explicit... China lets Chuck Norris search for porn on Google.';
+
+      fetchMock.get('http://api.icndb.com/jokes/random?limitTo=[explicit]', {
         method: 'GET',
         status: 200,
         body: joke
