@@ -6,6 +6,7 @@ import withRedux from 'next-redux-wrapper';
 import Chat from '../components/Chat';
 import Message from '../components/Message';
 import Layout from '../components/Layout';
+import PlayControls from '../components/PlayControls';
 
 class Index extends Component {
   constructor() {
@@ -56,13 +57,16 @@ class Index extends Component {
     const conversation = messages.map((message, i) => <Message key={i} text={message.message} isUser={message.isUser}/>);
     return (
       <Layout>
-        <h1>SpruceBot</h1>
+        <section className='header'>
+          <h1>SpruceBot</h1>
+          <PlayControls />
+        </section>
         <section className='conversation' ref={node => this.convo = node}>
           {conversation}
         </section>
         <Chat addMessage={this.addMessage}/>
         <style jsx>{`
-          h1 {
+          .header {
             align-items: center;
             color: #FFF;
             display: flex;

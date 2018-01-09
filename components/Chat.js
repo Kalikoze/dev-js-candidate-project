@@ -65,6 +65,7 @@ class Chat extends Component {
             background : url('../static/right-arrow.svg') #4B9DF6 no-repeat center / 50%;
             border: none;
             border-radius: 50%;
+            cursor: pointer;
             height: 40px;
             outline: none;
             position: relative;

@@ -10,7 +10,6 @@ const Layout = ({ children }) => (
       <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" />
     </Head>
     <video src='../static/ambient-background.mp4' autoPlay loop />
-    <audio src='../static/ambiance.mp3' autoPlay loop/>
     <section className='container'>
       {children}
     </section>

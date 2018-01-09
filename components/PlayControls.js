@@ -1,0 +1,65 @@
+import React, { Component } from 'react';
+
+export default class PlayControls extends Component {
+  constructor() {
+    super();
+    this.state = {
+      track: 1,
+      isPlaying: true
+    };
+  }
+
+  render() {
+    const { track, isPlaying } = this.state;
+    const audio = ['../static/track1.mp3'];
+
+    return (
+      <section className='play-controls'>
+        <audio src={`../static/music/track${track}.mp3`} ref={node => this.audio = node} autoPlay loop />
+        <img src='../static/play-controls/rewind.svg'
+          onClick={() => {
+            if(track === 1) {
+              return this.setState({ track: 4 });
+            }
+            this.setState({track: track - 1});
+          }}
+        />
+        <img
+          src={isPlaying ? '../static/play-controls/pause-button.svg' : '../static/play-controls/play-button.svg'}
+          onClick={() => (isPlaying ? this.audio.pause() : this.audio.play(), this.setState({ isPlaying: !isPlaying }))}
+        />
+        <img src='../static/play-controls/fast-forward.svg'
+          onClick={() => {
+            if(track === 4) {
+              return this.setState({ track: 1 });
+            }
+            this.setState({track: track + 1});
+          }}
+        />
+        <style jsx>{`
+          .play-controls {
+            position: absolute;
+            right: 20px;
+            top: 0;
+          }
+
+          img {
+            cursor: pointer;
+            height: 40px;
+            margin: 20px;
+            opacity: 0.7;
+            width: 40px;
+          }
+
+          img:hover {
+            opacity: 1;
+          }
+
+          img:active {
+            transform: scale(1.1);
+          }
+        `}</style>
+      </section>
+    );
+  }
+}
