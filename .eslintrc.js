@@ -9,7 +9,10 @@ module.exports = {
     ],
     globals: {
       require: 'false',
-      process: 'false'
+      process: 'false',
+      describe: 'false',
+      it: 'false',
+      expect: 'false',
     },
     "parserOptions": {
         "ecmaFeatures": {

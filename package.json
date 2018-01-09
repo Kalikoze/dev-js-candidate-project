@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
+    "test:watch": "npm test -- --watch",
     "dev": "node server.js"
   },
   "repository": {
@@ -18,12 +19,18 @@
   },
   "homepage": "https://github.com/Kalikoze/dev-js-candidate-project#readme",
   "dependencies": {
+    "babel-preset-es2015": "^6.24.1",
     "body-parser": "^1.18.2",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "express": "^4.16.2",
+    "fetch-mock": "^6.0.0-beta.7",
     "isomorphic-unfetch": "^2.0.0",
+    "jest": "^22.0.4",
     "next": "^4.2.1",
     "next-redux-wrapper": "^1.3.5",
     "react": "^16.2.0",
+    "react-addons-test-utils": "^15.6.2",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
