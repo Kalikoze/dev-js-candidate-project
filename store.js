@@ -33,6 +33,12 @@ const rootReducer = combineReducers({
 
 // Actions
 
+export const message = ({message, intent}) => ({
+  type: 'POST_MESSAGE',
+  message,
+  intent
+});
+
 export const postMessage = input => async dispatch => {
   const res = await fetch('/api/v1/message', {
     method: 'POST',
@@ -42,28 +48,43 @@ export const postMessage = input => async dispatch => {
     body: JSON.stringify({message: input})});
   const reply = await res.json();
 
-  dispatch({ type: 'POST_MESSAGE', message: reply.message, intent: reply.intent })
+  dispatch(message(reply))
 }
+
+export const randomJoke = joke => ({
+  type: 'RANDOM_JOKE',
+  joke
+});
 
 export const fetchRandomJoke = () => async dispatch => {
   const res = await fetch('http://api.icndb.com/jokes/random/?escape=javascript');
   const joke = await res.json();
 
-  dispatch({ type: 'RANDOM_JOKE', joke: joke.value.joke });
+  dispatch(randomJoke(joke.value.joke));
 };
+
+export const nerdyJoke = joke => ({
+  type: 'NERDY_JOKE',
+  joke
+});
 
 export const fetchNerdyJoke = () => async dispatch => {
   const res = await fetch('http://api.icndb.com/jokes/random?limitTo=[nerdy]');
   const joke = await res.json();
 
-  dispatch({ type: 'NERDY_JOKE', joke: joke.value.joke });
+  dispatch(nerdyJoke(joke.value.joke));
 };
+
+export const explicitJoke = joke => ({
+  type: 'EXPLICIT_JOKE',
+  joke
+});
 
 export const fetchExplicitJoke = () => async dispatch => {
   const res = await fetch('http://api.icndb.com/jokes/random?limitTo=[explicit]');
   const joke = await res.json();
 
-  dispatch({ type: 'EXPLICIT_JOKE', joke: joke.value.joke });
+  dispatch(explicitJoke(joke.value.joke));
 };
 
 export const Store = (initialState = { }) => {
