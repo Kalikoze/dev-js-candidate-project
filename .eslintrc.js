@@ -13,6 +13,7 @@ module.exports = {
       describe: 'false',
       it: 'false',
       expect: 'false',
+      beforeEach: 'false',
     },
     "parserOptions": {
         "ecmaFeatures": {
