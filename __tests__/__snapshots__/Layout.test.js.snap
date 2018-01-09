@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Layout component should render the Layout correctly 1`] = `
+<section
+  className="jsx-2146746531 layout"
+>
+  <video
+    autoPlay={true}
+    className="jsx-2146746531"
+    loop={true}
+    src="../static/ambient-background.mp4"
+  />
+  <section
+    className="jsx-2146746531 container"
+  >
+    <video
+      autoPlay={true}
+      loop={true}
+      src="../static/ambient-background.mp4"
+    />
+    <section
+      className="container"
+    />
+  </section>
+</section>
+`;
