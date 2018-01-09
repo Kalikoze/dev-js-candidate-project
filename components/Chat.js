@@ -44,14 +44,14 @@ class Chat extends Component {
             align-items: center;
             display: flex;
             height: 15%;
-            width: 60%;
+            width: 70%;
           }
 
           input {
             border: none;
             border-radius: 25px;
             font-family: 'Lato', sans-serif;
-            font-size: 2vw;
+            font-size: 28px;
             height: 50px;
             padding-left: 25px;
             width: 100%;
@@ -68,8 +68,8 @@ class Chat extends Component {
             cursor: pointer;
             height: 40px;
             outline: none;
-            position: relative;
-            right: 45px;
+            position: absolute;
+            right: 15.7%;
             width: 40px;
           }
 

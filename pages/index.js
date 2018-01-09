@@ -71,7 +71,7 @@ class Index extends Component {
             color: #FFF;
             display: flex;
             font-family: 'Lato', sans-serif;
-            font-size: 5vw;
+            font-size: 72px;
             font-weight: 700;
             height: 20%;
             justify-content: center;
@@ -83,7 +83,7 @@ class Index extends Component {
             flex-direction: column;
             height: 65%;
             overflow-y: scroll;
-            width: 80%;
+            width: 70%;
           }
         `}</style>
         <style jsx global>{`

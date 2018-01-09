@@ -9,9 +9,12 @@ export default class PlayControls extends Component {
     };
   }
 
+  componentDidMount() {
+    this.audio.volume = 0.6;
+  }
+
   render() {
     const { track, isPlaying } = this.state;
-    const audio = ['../static/track1.mp3'];
 
     return (
       <section className='play-controls'>
@@ -40,7 +43,7 @@ export default class PlayControls extends Component {
           .play-controls {
             position: absolute;
             right: 20px;
-            top: 0;
+            top: 10px;
           }
 
           img {
@@ -56,7 +59,7 @@ export default class PlayControls extends Component {
           }
 
           img:active {
-            transform: scale(1.1);
+            transform: scale(1.2);
           }
         `}</style>
       </section>
