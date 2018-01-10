@@ -23,7 +23,7 @@ describe('PlayControls component', () => {
       return null;
     };
 
-    const tree = renderer.create(<PlayControls/>, { createNodeMock }).toJSON();
+    const tree = renderer.create(wrapper, { createNodeMock }).toJSON();
 
     expect(tree).toMatchSnapshot();
   });
