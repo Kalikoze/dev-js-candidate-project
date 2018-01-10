@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Layout component should render the Layout correctly 1`] = `
+exports[`Layout component should render the Layout correctly with the right classes and styles 1`] = `
 <section
   className="jsx-2146746531 layout"
 >

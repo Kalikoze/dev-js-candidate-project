@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Message component should render the Message correctly with the right classes and styles 1`] = `
+<section
+  className="jsx-3991356685 message watson"
+>
+  <p
+    className="jsx-3991356685"
+  >
+    Hello SpruceBot!
+  </p>
+</section>
+`;

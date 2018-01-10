@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PlayControls component should render the PlayControls correctly with the right classes and styles with a vaild ref 1`] = `
+<section
+  className="jsx-3144229325 play-controls"
+>
+  <audio
+    autoPlay={true}
+    className="jsx-3144229325"
+    loop={true}
+    src="../static/music/track1.mp3"
+  />
+  <img
+    className="jsx-3144229325"
+    onClick={[Function]}
+    src="../static/play-controls/rewind.svg"
+  />
+  <img
+    className="jsx-3144229325"
+    onClick={[Function]}
+    src="../static/play-controls/pause-button.svg"
+  />
+  <img
+    className="jsx-3144229325"
+    onClick={[Function]}
+    src="../static/play-controls/fast-forward.svg"
+  />
+</section>
+`;
