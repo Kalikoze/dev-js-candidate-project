@@ -3,7 +3,7 @@ import fetch from 'isomorphic-unfetch';
 import { bindActionCreators } from 'redux';
 import { fetchRandomJoke, fetchNerdyJoke, fetchExplicitJoke, Store } from '../store';
 import withRedux from 'next-redux-wrapper';
-import Chat from '../components/Chat';
+import ChatContainer from '../containers/ChatContainer';
 import Message from '../components/Message';
 import Layout from '../components/Layout';
 import PlayControls from '../components/PlayControls';
@@ -64,7 +64,7 @@ class Index extends Component {
         <section className='conversation' ref={node => this.convo = node}>
           {conversation}
         </section>
-        <Chat addMessage={this.addMessage}/>
+        <ChatContainer addMessage={this.addMessage}/>
         <style jsx>{`
           .header {
             align-items: center;

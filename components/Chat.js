@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import fetch from 'isomorphic-unfetch';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { postMessage } from '../store';
 import PropTypes from 'prop-types';
 
-class Chat extends Component {
+export default class Chat extends Component {
   constructor() {
     super();
     this.state = {
@@ -85,13 +82,3 @@ class Chat extends Component {
 Chat.propTypes = {
   addMessage: PropTypes.func.isRequired,
 };
-
-const mapStateToProps = ({watsonResponse}) => ({ response: watsonResponse.response });
-
-const mapDispatchToProps = dispatch => {
-  return {
-    postMessage: bindActionCreators(postMessage, dispatch)
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Chat);

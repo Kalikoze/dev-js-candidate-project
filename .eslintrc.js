@@ -14,6 +14,7 @@ module.exports = {
       it: 'false',
       expect: 'false',
       beforeEach: 'false',
+      jest: 'false',
     },
     "parserOptions": {
         "ecmaFeatures": {
