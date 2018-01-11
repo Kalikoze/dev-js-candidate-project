@@ -1,3 +1,5 @@
+![SpruceBot UI](https://media.giphy.com/media/xUNda19iCfA3neIgCI/giphy.gif)
+
 # SpruceBot (SpruceLabs Code Challenge)
 
 ## Synopsis

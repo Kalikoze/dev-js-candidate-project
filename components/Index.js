@@ -64,8 +64,8 @@ export default class Index extends Component {
             align-items: center;
             color: #FFF;
             display: flex;
-            font-family: 'Lato', sans-serif;
-            font-size: 72px;
+            font-family: 'Rokkitt', serif;
+            font-size: 80px;
             font-weight: 700;
             height: 20%;
             justify-content: center;
@@ -83,7 +83,7 @@ export default class Index extends Component {
           @media (max-width: 950px) {
             .header {
               align-items: flex-end;
-              padding-bottom: 20px;
+              padding-bottom: 15px;
             }
 
             h1 {

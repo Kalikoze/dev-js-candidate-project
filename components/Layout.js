@@ -8,6 +8,7 @@ const Layout = ({ children }) => (
       <title>My page title</title>
       <meta name="viewport" content="initial-scale=1, width=device-width" />
       <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" />
+      <link href="https://fonts.googleapis.com/css?family=Rokkitt" rel="stylesheet" />
     </Head>
     <video src='../static/ambient-background.mp4' autoPlay loop />
     <section className='container'>
