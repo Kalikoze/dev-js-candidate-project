@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import fetch from 'isomorphic-unfetch';
 import PropTypes from 'prop-types';
 
 export default class Chat extends Component {
@@ -20,7 +19,7 @@ export default class Chat extends Component {
 
       const { message, intent } = this.props.response;
 
-      addMessage(message, intent || '#dont_understand')
+      addMessage(message, intent || '#dont_understand');
       this.setState({input: ''});
     }
   }
@@ -29,13 +28,13 @@ export default class Chat extends Component {
     const { input } = this.state;
     return (
       <section className='input-section'>
-          <input
-            placeholder='Chat with SpruceBot here...'
-            value={input}
-            onChange={e => this.setState({input: e.target.value})}
-            onKeyDown={e => this.submit(e)}
-          />
-          <button onClick={e => this.submit(e)}></button>
+        <input
+          placeholder='Chat with SpruceBot here...'
+          value={input}
+          onChange={e => this.setState({input: e.target.value})}
+          onKeyDown={e => this.submit(e)}
+        />
+        <button onClick={e => this.submit(e)}></button>
         <style jsx>{`
           .input-section {
             align-items: center;
@@ -89,4 +88,5 @@ export default class Chat extends Component {
 
 Chat.propTypes = {
   addMessage: PropTypes.func.isRequired,
+  response: PropTypes.object,
 };

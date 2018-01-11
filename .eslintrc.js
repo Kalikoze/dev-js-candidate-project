@@ -17,6 +17,7 @@ module.exports = {
       jest: 'false',
     },
     "parserOptions": {
+      "ecmaVersion": 8,
         "ecmaFeatures": {
             "experimentalObjectRestSpread": true,
             "jsx": true

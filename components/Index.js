@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import fetch from 'isomorphic-unfetch';
+import PropTypes from 'prop-types';
 import ChatContainer from '../containers/ChatContainer';
-import { fetchRandomJoke, fetchNerdyJoke, fetchExplicitJoke } from '../store';
 import Message from '../components/Message';
 import Layout from '../components/Layout';
 import PlayControls from '../components/PlayControls';
@@ -23,7 +22,7 @@ export default class Index extends Component {
     const { messages } = this.state;
     const { message } = this.props;
     if(this.props.message) {
-      this.setState({messages: [...messages, {message, isUser: false}]})
+      this.setState({messages: [...messages, {message, isUser: false}]});
     }
   }
 
@@ -103,3 +102,9 @@ export default class Index extends Component {
     );
   }
 }
+
+Index.propTypes = {
+  message: PropTypes.string.isRequired,
+  fetchJoke: PropTypes.object.isRequired,
+  currentJoke: PropTypes.string,
+};

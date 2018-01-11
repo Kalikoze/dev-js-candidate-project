@@ -6,30 +6,30 @@ import thunkMiddleware from 'redux-thunk';
 
 export const newJoke = (state = {}, action) => {
   switch(action.type) {
-    case 'RANDOM_JOKE':
-      return { currentJoke: action.joke };
-    case 'NERDY_JOKE':
-      return { currentJoke: action.joke };
-    case 'EXPLICIT_JOKE':
-      return { currentJoke: action.joke };
-    default:
-      return state;
+  case 'RANDOM_JOKE':
+    return { currentJoke: action.joke };
+  case 'NERDY_JOKE':
+    return { currentJoke: action.joke };
+  case 'EXPLICIT_JOKE':
+    return { currentJoke: action.joke };
+  default:
+    return state;
   }
 };
 
 export const watsonResponse = (state = {}, action) => {
   switch(action.type) {
-    case 'POST_MESSAGE':
-      return { response: { message: action.message, intent: action.intent }};
-    default:
-      return state;
+  case 'POST_MESSAGE':
+    return { response: { message: action.message, intent: action.intent }};
+  default:
+    return state;
   }
-}
+};
 
 const rootReducer = combineReducers({
   watsonResponse,
   newJoke,
-})
+});
 
 // Actions
 
@@ -48,8 +48,8 @@ export const postMessage = input => async dispatch => {
     body: JSON.stringify({message: input})});
   const reply = await res.json();
 
-  dispatch(message(reply))
-}
+  dispatch(message(reply));
+};
 
 export const randomJoke = joke => ({
   type: 'RANDOM_JOKE',
