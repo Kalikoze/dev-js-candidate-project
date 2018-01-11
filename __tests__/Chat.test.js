@@ -8,9 +8,10 @@ configure({ adapter: new Adapter() });
 
 describe('Chat component', () => {
   let wrapper;
+  const mockFn = jest.fn();
 
   beforeEach(() => {
-    wrapper = mount(<Chat addMessage={jest.fn()} />);
+    wrapper = mount(<Chat addMessage={mockFn} />);
   });
 
   it('should render the Chat component correctly with the right classes and styles', () => {
@@ -42,5 +43,9 @@ describe('Chat component', () => {
     chatInput.simulate('keypress', { key: 'Enter', keyCode: 13, which: 13 });
     submit.simulate('click');
     expect(wrapper.state().input).toEqual('');
+  });
+
+  it('should have addMessage function as a prop', () => {
+    expect(wrapper.props().addMessage).toEqual(mockFn);
   });
 });
