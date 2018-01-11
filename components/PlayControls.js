@@ -43,7 +43,6 @@ export default class PlayControls extends Component {
             height: 40px;
             margin: 20px;
             opacity: 0.7;
-            width: 40px;
           }
 
           img:hover {
@@ -52,6 +51,23 @@ export default class PlayControls extends Component {
 
           img:active {
             transform: scale(1.2);
+          }
+
+          @media (max-width: 950px) {
+            img {
+              height: 25px;
+            }
+          }
+
+          @media (max-width: 700px) {
+            .play-controls {
+              align-items: center;
+              display: flex;
+              justify-content: center;
+              left: 0;
+              margin: auto;
+              right: 0;
+            }
           }
         `}</style>
       </section>

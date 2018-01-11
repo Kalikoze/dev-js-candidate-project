@@ -73,6 +73,14 @@ export default class Chat extends Component {
           button:active {
             background-color: #8EBBF4;
           }
+
+          @media (max-width: 950px) {
+            input { font-size: 20px; }
+          }
+
+          @media (max-width: 460px) {
+            input { font-size: 12px; }
+          }
         `}</style>
       </section>
     );

@@ -80,6 +80,17 @@ export default class Index extends Component {
             overflow-y: scroll;
             width: 70%;
           }
+
+          @media (max-width: 950px) {
+            .header {
+              align-items: flex-end;
+              padding-bottom: 20px;
+            }
+
+            h1 {
+              font-size: 40px;
+            }
+          }
         `}</style>
         <style jsx global>{`
           * {

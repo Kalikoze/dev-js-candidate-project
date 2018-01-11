@@ -14,7 +14,7 @@ const Message = ({ text, isUser }) => (
         margin: 20px;
         padding: 25px;
         position: relative;
-        width: 50%;
+        width: 70%;
       }
 
       .message:after {
@@ -45,6 +45,17 @@ const Message = ({ text, isUser }) => (
         left: auto;
         margin-right: -10px;
       	right: 0;
+      }
+
+      @media (max-width: 950px) {
+        .message {
+          font-size: 16px;
+          width: 90%;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .message { font-size: 12px; }
       }
     `}</style>
   </section>
