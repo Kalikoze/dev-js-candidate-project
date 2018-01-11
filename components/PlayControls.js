@@ -19,25 +19,17 @@ export default class PlayControls extends Component {
     return (
       <section className='play-controls'>
         <audio src={`../static/music/track${track}.mp3`} ref={node => this.audio = node} autoPlay loop />
-        <img src='../static/play-controls/rewind.svg'
-          onClick={() => {
-            if(track === 1) {
-              return this.setState({ track: 4, isPlaying: true });
-            }
-            this.setState({track: track - 1, isPlaying: true});
-          }}
+        <img
+          src='../static/play-controls/rewind.svg'
+          onClick={() => track === 1 ? this.setState({ track: 4, isPlaying: true }) : this.setState({track: track - 1, isPlaying: true})}
         />
         <img
           src={isPlaying ? '../static/play-controls/pause-button.svg' : '../static/play-controls/play-button.svg'}
           onClick={() => (isPlaying ? this.audio.pause() : this.audio.play(), this.setState({ isPlaying: !isPlaying }))}
         />
-        <img src='../static/play-controls/fast-forward.svg'
-          onClick={() => {
-            if(track === 4) {
-              return this.setState({ track: 1, isPlaying: true });
-            }
-            this.setState({track: track + 1, isPlaying: true});
-          }}
+        <img
+          src='../static/play-controls/fast-forward.svg'
+          onClick={() => track === 4 ? this.setState({ track: 1, isPlaying: true }) : this.setState({track: track + 1, isPlaying: true})}
         />
         <style jsx>{`
           .play-controls {
