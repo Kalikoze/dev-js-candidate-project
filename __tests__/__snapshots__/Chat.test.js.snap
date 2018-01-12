@@ -2,17 +2,17 @@
 
 exports[`Chat component should render the Chat component correctly with the right classes and styles 1`] = `
 <section
-  className="jsx-2439614921 input-section"
+  className="jsx-799177478 input-section"
 >
   <input
-    className="jsx-2439614921"
+    className="jsx-799177478"
     onChange={[Function]}
     onKeyDown={[Function]}
     placeholder="Chat with SpruceBot here..."
     value=""
   />
   <button
-    className="jsx-2439614921"
+    className="jsx-799177478"
     onClick={[Function]}
   />
 </section>

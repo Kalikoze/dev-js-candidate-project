@@ -4,6 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "next build",
+    "start": "next start -p $PORT",
+    "heroku-postbuild": "npm run build", 
     "test": "jest",
     "test:watch": "npm test -- --watch",
     "dev": "node server.js"

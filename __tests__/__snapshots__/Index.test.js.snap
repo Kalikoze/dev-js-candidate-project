@@ -14,54 +14,54 @@ exports[`Index page should render the Index page correctly with the right classe
     className="jsx-2146746531 container"
   >
     <section
-      className="jsx-3139470545 header"
+      className="jsx-235004060 header"
     >
       <h1
-        className="jsx-3139470545"
+        className="jsx-235004060"
       >
         SpruceBot
       </h1>
       <section
-        className="jsx-3144229325 play-controls"
+        className="jsx-1701706752 play-controls"
       >
         <audio
           autoPlay={true}
-          className="jsx-3144229325"
+          className="jsx-1701706752"
           loop={true}
           src="../static/music/track1.mp3"
         />
         <img
-          className="jsx-3144229325"
+          className="jsx-1701706752"
           onClick={[Function]}
           src="../static/play-controls/rewind.svg"
         />
         <img
-          className="jsx-3144229325"
+          className="jsx-1701706752"
           onClick={[Function]}
           src="../static/play-controls/pause-button.svg"
         />
         <img
-          className="jsx-3144229325"
+          className="jsx-1701706752"
           onClick={[Function]}
           src="../static/play-controls/fast-forward.svg"
         />
       </section>
     </section>
     <section
-      className="jsx-3139470545 conversation"
+      className="jsx-235004060 conversation"
     />
     <section
-      className="jsx-2439614921 input-section"
+      className="jsx-799177478 input-section"
     >
       <input
-        className="jsx-2439614921"
+        className="jsx-799177478"
         onChange={[Function]}
         onKeyDown={[Function]}
         placeholder="Chat with SpruceBot here..."
         value=""
       />
       <button
-        className="jsx-2439614921"
+        className="jsx-799177478"
         onClick={[Function]}
       />
     </section>
