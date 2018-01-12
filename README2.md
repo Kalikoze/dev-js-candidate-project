@@ -2,6 +2,8 @@
 
 # SpruceBot (SpruceLabs Code Challenge)
 
+[Deployed App](https://sprucebot.herokuapp.com/)
+
 ## Synopsis
 This is an application where the user can talk with a chatbot that specializes in telling jokes (specifically Chuck Norris jokes 😜).  This application was developed using ReactJS, ReduxJS, NextJS, Express, Watson Conversation, and the Internet Chuck Norris Database.
 

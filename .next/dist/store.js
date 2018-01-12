@@ -132,7 +132,7 @@ var fetchRandomJoke = exports.fetchRandomJoke = function fetchRandomJoke() {
           switch (_context2.prev = _context2.next) {
             case 0:
               _context2.next = 2;
-              return fetch('http://api.icndb.com/jokes/random/?escape=javascript');
+              return fetch('https://api.icndb.com/jokes/random/?escape=javascript');
 
             case 2:
               res = _context2.sent;
@@ -174,7 +174,7 @@ var fetchNerdyJoke = exports.fetchNerdyJoke = function fetchNerdyJoke() {
           switch (_context3.prev = _context3.next) {
             case 0:
               _context3.next = 2;
-              return fetch('http://api.icndb.com/jokes/random?escape=javascript&limitTo=[nerdy]');
+              return fetch('https://api.icndb.com/jokes/random?escape=javascript&limitTo=[nerdy]');
 
             case 2:
               res = _context3.sent;
@@ -216,7 +216,7 @@ var fetchExplicitJoke = exports.fetchExplicitJoke = function fetchExplicitJoke()
           switch (_context4.prev = _context4.next) {
             case 0:
               _context4.next = 2;
-              return fetch('http://api.icndb.com/jokes/random?escape=javascript&limitTo=[explicit]');
+              return fetch('https://api.icndb.com/jokes/random?escape=javascript&limitTo=[explicit]');
 
             case 2:
               res = _context4.sent;
