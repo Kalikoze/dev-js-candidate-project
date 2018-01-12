@@ -4,12 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "node server.js",
     "build": "next build",
-    "start": "next start -p $PORT",
-    "heroku-postbuild": "npm run build", 
-    "test": "jest",
-    "test:watch": "npm test -- --watch",
-    "dev": "node server.js"
+    "start": "NODE_ENV=production node server.js",
+    "postinstall": "npm run build",
+    "test:watch": "npm test -- --watch"
   },
   "repository": {
     "type": "git",

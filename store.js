@@ -57,7 +57,7 @@ export const randomJoke = joke => ({
 });
 
 export const fetchRandomJoke = () => async dispatch => {
-  const res = await fetch('http://api.icndb.com/jokes/random/?escape=javascript');
+  const res = await fetch('https://api.icndb.com/jokes/random/?escape=javascript');
   const joke = await res.json();
 
   dispatch(randomJoke(joke.value.joke));
@@ -69,7 +69,7 @@ export const nerdyJoke = joke => ({
 });
 
 export const fetchNerdyJoke = () => async dispatch => {
-  const res = await fetch('http://api.icndb.com/jokes/random?escape=javascript&limitTo=[nerdy]');
+  const res = await fetch('https://api.icndb.com/jokes/random?escape=javascript&limitTo=[nerdy]');
   const joke = await res.json();
 
   dispatch(nerdyJoke(joke.value.joke));
@@ -81,7 +81,7 @@ export const explicitJoke = joke => ({
 });
 
 export const fetchExplicitJoke = () => async dispatch => {
-  const res = await fetch('http://api.icndb.com/jokes/random?escape=javascript&limitTo=[explicit]');
+  const res = await fetch('https://api.icndb.com/jokes/random?escape=javascript&limitTo=[explicit]');
   const joke = await res.json();
 
   dispatch(explicitJoke(joke.value.joke));
