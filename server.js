@@ -17,6 +17,8 @@ const params = {
   workspace_id: 'b92be708-4b4e-43fd-9bd5-8486fc66d99b'
 };
 
+let context;
+
 app.prepare()
   .then(() => {
     const server = express();
@@ -33,10 +35,12 @@ app.prepare()
       if (response.intents && response.intents[0]) {
         const intent = response.intents[0];
         const message = response.output.text[0];
+        context = response.context;
         return { message: message, intent: intent.intent };
       }
 
       if (response.output.text.length != 0) {
+        context - response.context;
         return {message: response.output.text[0]};
       }
     };
@@ -51,7 +55,7 @@ app.prepare()
       conversation.message({
         workspace_id: params.workspace_id,
         input: { text: req.body.message },
-        context : res.context,
+        context,
       }, (err, data) => {
         res.send(processResponse(err, data));
       });
